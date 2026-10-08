@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salas para Medicina | Clínica N.S. da Conceição</title>
+<meta name="description" content="Salas disponíveis para aluguel para profissionais da saúde, adaptáveis à sua especialidade. Clínica de Atendimento N.S. da Conceição.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1b3a63;--navy-dark:#12294a;--blue:#5b7fb0;--sky:#e8eff8;--accent:#25b39e;--ink:#1d2733}
+body{font-family:'Poppins',sans-serif;color:var(--ink);scroll-behavior:smooth}
+html{scroll-behavior:smooth}
+.navbar{background:var(--navy-dark)}
+.navbar-brand{font-weight:700;letter-spacing:.3px;font-size:1rem;line-height:1.2}
+.navbar-brand small{display:block;font-weight:400;font-size:.7rem;opacity:.75}
+.btn-accent{background:var(--accent);color:#fff;font-weight:600;border:0;border-radius:50px;padding:.75rem 1.6rem}
+.btn-accent:hover{background:#1e9886;color:#fff}
+.btn-outline-light{border-radius:50px;font-weight:600;padding:.75rem 1.6rem}
+.hero{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,var(--blue));color:#fff;padding:4rem 0 5rem;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;background:rgba(255,255,255,.06);transform:rotate(25deg);border-radius:40px}
+.badge-new{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:.35rem 1rem;font-size:.8rem;font-weight:500}
+.hero h1{font-weight:800;font-size:clamp(1.9rem,5vw,3.1rem);line-height:1.15}
+.hero h1 span{color:#8fd6ff}
+.hero p{font-size:1.05rem;opacity:.9;max-width:520px}
+.stat{border-left:3px solid var(--accent);padding-left:.8rem}
+.stat strong{display:block;font-size:1.6rem;font-weight:700}
+.stat span{font-size:.8rem;opacity:.8}
+section{padding:4rem 0}
+.sec-title{font-weight:700;color:var(--navy);font-size:clamp(1.5rem,3.5vw,2.1rem)}
+.sec-title::after{content:"";display:block;width:56px;height:4px;background:var(--accent);border-radius:4px;margin-top:.6rem}
+.text-center .sec-title::after{margin-inline:auto}
+#salas{background:var(--sky);margin-top:-2rem;border-radius:28px 28px 0 0;position:relative;z-index:2}
+.carousel{border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(18,41,74,.25);background:var(--navy-dark)}
+.carousel-item img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.carousel-control-prev,.carousel-control-next{width:auto;opacity:1;padding:0 .8rem}
+.ctrl{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.carousel-indicators{margin-bottom:.6rem}
+.carousel-indicators [data-bs-target]{width:9px;height:9px;border-radius:50%;border:0}
+.counter{position:absolute;top:12px;right:12px;z-index:3;background:rgba(18,41,74,.85);color:#fff;border-radius:50px;padding:.2rem .8rem;font-size:.8rem;font-weight:600}
+.thumbs{display:flex;gap:.5rem;overflow-x:auto;padding:.8rem .2rem .3rem;scrollbar-width:thin}
+.thumbs button{flex:0 0 auto;width:78px;height:58px;padding:0;border:3px solid transparent;border-radius:10px;overflow:hidden;opacity:.6;background:none;transition:.2s}
+.thumbs button.active{border-color:var(--accent);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.hint{font-size:.85rem;color:#5c6b7d}
+.chip{display:inline-block;background:#fff;color:var(--navy);border:1px solid #cfdbec;border-radius:50px;padding:.45rem 1rem;margin:.25rem .15rem;font-weight:500;font-size:.9rem}
+.card-b{background:#fff;border-radius:16px;padding:1.6rem;height:100%;box-shadow:0 6px 20px rgba(18,41,74,.08);border-top:4px solid var(--blue)}
+.card-b .ico{font-size:1.8rem}
+.card-b h3{font-size:1.05rem;font-weight:600;color:var(--navy);margin:.6rem 0 .4rem}
+.card-b p{font-size:.9rem;color:#5c6b7d;margin:0}
+#contato{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:#fff}
+#contato .sec-title{color:#fff}
+.contact-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:1.4rem;height:100%}
+.contact-box small{text-transform:uppercase;letter-spacing:1px;opacity:.7;font-size:.72rem}
+.contact-box .v{font-size:1.15rem;font-weight:600;margin-top:.2rem}
+.contact-box a{color:#fff;text-decoration:none}
+footer{background:var(--navy-dark);color:#9fb2cc;font-size:.8rem;padding:1.2rem 0}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--accent);color:#fff;border-radius:50px;padding:.8rem 1.2rem;font-weight:600;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.wa-float:hover{color:#fff;background:#1e9886}
+@media(max-width:576px){section{padding:3rem 0}.hero{padding:3rem 0 4.5rem}}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Clínica N.S. da Conceição<small>Atendimento</small></a>
+    <a href="#contato" class="btn btn-accent btn-sm px-3">Fale conosco</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container position-relative" style="z-index:1">
+    <span class="badge-new">Novo espaço, recém-inaugurado</span>
+    <h1 class="mt-3">Sua sala para atender, <span>pronta para começar.</span></h1>
+    <p class="mt-3">Salas disponíveis para aluguel, adaptadas à necessidade de cada profissional, seja qual for a sua especialidade. Estrutura nova, ambiente profissional e espaço para crescer com a sua prática.</p>
+    <div class="d-flex flex-wrap gap-2 mt-4">
+      <a href="#salas" class="btn btn-accent">Ver as salas</a>
+      <a href="#contato" class="btn btn-outline-light">Entrar em contato</a>
+    </div>
+    <div class="row g-3 mt-4" style="max-width:480px">
+      <div class="col-4"><div class="stat"><strong>Qualquer</strong><span>especialidade</span></div></div>
+      <div class="col-4"><div class="stat"><strong>Salas</strong><span>flexíveis</span></div></div>
+      <div class="col-4"><div class="stat"><strong>Novo</strong><span>espaço</span></div></div>
+    </div>
+  </div>
+</header>
+
+<section id="salas">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="sec-title mb-4">Conheça as salas</h2>
+
+        <div id="carrossel" class="carousel slide position-relative" data-bs-interval="false" data-bs-touch="true" aria-label="Galeria de salas">
+          <div class="counter"><span id="atual">1</span> / 8</div>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carrossel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active"><img src="img/01-fachada.jpg" alt="Fachada da Clínica N.S. da Conceição"></div>
+            <div class="carousel-item"><img src="img/02-imagem.jpg" alt="Sala para mamografia, tomografia e raio X"></div>
+            <div class="carousel-item"><img src="img/03-clinico.jpg" alt="Sala para clínico geral"></div>
+            <div class="carousel-item"><img src="img/04-coleta.jpg" alt="Sala para coleta laboratorial"></div>
+            <div class="carousel-item"><img src="img/05-gineco.jpg" alt="Sala para ginecologista"></div>
+            <div class="carousel-item"><img src="img/06-fisio.jpg" alt="Sala para fisioterapia"></div>
+            <div class="carousel-item"><img src="img/07-pediatria.jpg" alt="Sala para pediatria"></div>
+            <div class="carousel-item"><img src="img/08-dentista.jpg" alt="Sala para dentista"></div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev" aria-label="Anterior"><span class="ctrl">‹</span></button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next" aria-label="Próximo"><span class="ctrl">›</span></button>
+        </div>
+
+        <div class="thumbs" id="thumbs"></div>
+        <p class="hint text-center mt-2 mb-0">Deslize ou use as setas para ver todas as salas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="sec-title">Uma sala para cada necessidade</h2>
+      <p class="text-secondary mt-3 mb-0">As salas são usadas conforme a sua demanda. Veja alguns exemplos:</p>
+    </div>
+    <div class="text-center mb-5">
+      <span class="chip">Clínico geral</span><span class="chip">Ginecologia</span><span class="chip">Pediatria</span>
+      <span class="chip">Odontologia</span><span class="chip">Fisioterapia</span><span class="chip">Coleta laboratorial</span>
+      <span class="chip">Raio X</span><span class="chip">Mamografia</span><span class="chip">Tomografia</span><span class="chip">E outras especialidades</span>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="card-b"><div class="ico"></div><h3>Salas flexíveis</h3><p>Ambientes amplos e claros, que se adaptam ao tipo de atendimento que você precisa realizar.</p></div></div>
+      <div class="col-md-4"><div class="card-b"><div class="ico"></div><h3>Fácil acesso</h3><p>Entrada própria de frente para a rua, com espaço de recepção para seus pacientes.</p></div></div>
+      <div class="col-md-4"><div class="card-b"><div class="ico"></div><h3>Comece agora</h3><p>Espaço em início de operação: ótima oportunidade para estabelecer sua prática. Conte sua necessidade e vamos conversar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="sec-title">Reserve sua sala</h2>
+      <p class="opacity-75 mt-3">Conte qual é a sua especialidade e a sua necessidade. Agende uma visita.</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-5">
+        <div class="contact-box">
+          <small>Telefone</small>
+          <div class="v"><a href="tel:+55037999690875" id="tel">(37) 9 9969-0875</a></div>        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="contact-box">
+          <small>Endereço</small>
+          <div class="v">Av. Ver. Ronaldo de Castro Alves, 895 – Providência<br>Pará de Minas – MG</div>
+          <a class="btn btn-outline-light mt-3" href="https://maps.app.goo.gl/EjStYSBZ3wVfXbGi9" target="_blank" rel="noopener">Ver no mapa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container text-center">Clínica de Atendimento N.S. da Conceição</div></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const car = document.getElementById('carrossel');
+  const thumbs = document.getElementById('thumbs');
+  const imgs = car.querySelectorAll('.carousel-item img');
+
+  imgs.forEach((img, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = i === 0 ? 'active' : '';
+    b.setAttribute('aria-label', 'Ir para ' + img.alt);
+    b.innerHTML = '<img src="' + img.src + '" alt="">';
+    b.onclick = () => bootstrap.Carousel.getOrCreateInstance(car).to(i);
+    thumbs.appendChild(b);
+  });
+
+  car.addEventListener('slid.bs.carousel', e => {
+    document.getElementById('atual').textContent = e.to + 1;
+    [...thumbs.children].forEach((t, i) => t.classList.toggle('active', i === e.to));
+    thumbs.children[e.to].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  });
+</script>
+</body>
+</html>
